@@ -1,7 +1,7 @@
 /*
 Name: CF7 form to all products (after short description, with add_action)
 Description: Add a Contact Form 7 form with the related WooCommerce product's name.
-Author: Ye Linn Zaw
+Author: yelinnzaw
 Version: 0.1
 WC tested up to: 4.1.0
 */
