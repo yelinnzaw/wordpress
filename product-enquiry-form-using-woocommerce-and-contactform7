@@ -1,0 +1,40 @@
+/*
+Name: CF7 form to all products (after short description, with add_action)
+Description: Add a Contact Form 7 form with the related WooCommerce product's name.
+Author: Ye Linn Zaw
+Version: 0.1
+WC tested up to: 4.1.0
+*/
+
+//*Contact Form7 Woo-ProductForm & Get Custom Function.
+
+add_filter( 'woocommerce_product_tabs', 'product_enquiry_tab' );
+function product_enquiry_tab( $tabs ) {
+
+    $tabs['test_tab'] = array(
+        'title'     => __( 'Enquire about Product', 'woocommerce' ),
+        'priority'  => 50,
+        'callback'  => 'product_enquiry_tab_form'
+    );
+
+    return $tabs;
+
+}
+function product_enquiry_tab_form() {
+    global $product;
+    //If you want to have product ID also
+    //$product_id = $product->id;
+    $subject    =   "Enquire about ".$product->post->post_title;
+
+    echo "<h3>".$subject."</h3>";
+    echo do_shortcode('[contact-form-7 id="7329" title="Product Form"]'); [product-name] //add your contact form shortcode here ..
+
+    ?>
+
+    <script>
+    (function($){
+        $(".product-name").val("<?php echo $subject; ?>");
+    })(jQuery);
+    </script>   
+    <?php   
+}
